@@ -1,9 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import DialogBoxContent from "./components/dialogBoxContent/page";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
+
+  const reportData = [
+    {
+      date: "22.07.2021",
+      reportName: "APP_URL_USAGE_(Exclude_Half_Days)_3_6_2021_3_31_2021.csv",
+      downloadLink: "#",
+    },
+    {
+      date: "20.07.2021",
+      reportName: "RUR_L1_01_01_2021_31_03_2021.csv",
+      downloadLink: "#",
+    },
+    {
+      date: "19.07.2021",
+      reportName: "RUR_L2_(Exclude_NonWorking_Days)_4_1_2021_4_1_2021.csv",
+      downloadLink: "#",
+    },
+  ];
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,30 +41,12 @@ export default function Home() {
         >
           Generate Reports
         </button>
-        {open && (
-          <div className="fixed z-10 inset-0 overflow-y-auto flex items-center justify-center">
-            <div className="flex justify-between items-center bg-white rounded-lg p-5 w-auto">
-              <h2 className="text-xl text-black font-semibold ml-60">
-                Recently Generated Reports
-              </h2>
-              <div className="flex justify-end ml-32">
-                <button
-                  onClick={handleClickClose}
-                  className=" text-black font-bold border border-gray-800 rounded px-2"
-                >
-                  &#10006;
-                </button>
-                <button
-                  onClick={handleClickClose}
-                  className="text-black font-bold border border-gray-800 rounded px-2 ml-3"
-                >
-                  &#10006;
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
+      <DialogBoxContent
+        open={open}
+        handleClickClose={handleClickClose}
+        reportData={reportData}
+      />
     </main>
   );
 }
