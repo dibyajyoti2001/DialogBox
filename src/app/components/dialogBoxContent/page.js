@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Pagination from "../paginate/page";
 
 export default function DialogBoxContent({
@@ -5,6 +8,12 @@ export default function DialogBoxContent({
   handleClickClose,
   reportData,
 }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 5;
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
   return (
     <div
       className={`fixed inset-0 overflow-y-auto ${
@@ -134,7 +143,11 @@ export default function DialogBoxContent({
                   ))}
                 </tbody>
               </table>
-              <Pagination />
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+              />
             </div>
           </div>
         </div>
