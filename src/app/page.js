@@ -4,7 +4,7 @@ import { useState } from "react";
 import DialogBoxContent from "./components/dialogBoxContent/page";
 import reportData from "./reportData/page";
 
-export default function Home() {
+function useDialogBox() {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -14,6 +14,12 @@ export default function Home() {
   const handleClickClose = () => {
     setOpen(false);
   };
+
+  return { open, handleClickOpen, handleClickClose };
+}
+
+export default function Home() {
+  const { open, handleClickOpen, handleClickClose } = useDialogBox();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

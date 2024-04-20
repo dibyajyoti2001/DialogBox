@@ -3,17 +3,24 @@
 import { useState } from "react";
 import Pagination from "../paginate/page";
 
-export default function DialogBoxContent({
-  open,
-  handleClickClose,
-  reportData,
-}) {
+function usePagination() {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 5;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
+  return { currentPage, totalPages, handlePageChange };
+}
+
+export default function DialogBoxContent({
+  open,
+  handleClickClose,
+  reportData,
+}) {
+  const { currentPage, totalPages, handlePageChange } = usePagination();
+
   return (
     <div
       className={`fixed inset-0 overflow-y-auto ${
