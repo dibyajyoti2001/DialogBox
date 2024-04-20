@@ -2,27 +2,10 @@
 
 import { useState } from "react";
 import DialogBoxContent from "./components/dialogBoxContent/page";
+import reportData from "./reportData/page";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
-
-  const reportData = [
-    {
-      date: "22.07.2021",
-      reportName: "APP_URL_USAGE_(Exclude_Half_Days)_3_6_2021_3_31_2021.csv",
-      downloadLink: "#",
-    },
-    {
-      date: "20.07.2021",
-      reportName: "RUR_L1_01_01_2021_31_03_2021.csv",
-      downloadLink: "#",
-    },
-    {
-      date: "19.07.2021",
-      reportName: "RUR_L2_(Exclude_NonWorking_Days)_4_1_2021_4_1_2021.csv",
-      downloadLink: "#",
-    },
-  ];
 
   const handleClickOpen = () => {
     setOpen(true);
